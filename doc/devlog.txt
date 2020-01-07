@@ -2,3 +2,6 @@ Python Promethazine DevLog
 
 Team -- 2020-01-06 1:43
     - Completed design doc and prepared repo
+
+Team -- 2020-01-07 1:01
+    - Updated design doc and repo
