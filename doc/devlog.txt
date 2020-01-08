@@ -10,3 +10,6 @@ Thompson, Alex -- 2020-01-07 21:10
     - created skeleton files for both app.py and databaseUtils.py
     - added comments to each function/route explaining purpose of the function/what must be accomplished
     - created some basic html templates to be used
+
+Chen Justin -- 2020-01-08 9:26
+    - Worked on a basic html template with bootstrap
