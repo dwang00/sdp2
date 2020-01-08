@@ -5,3 +5,8 @@ Team -- 2020-01-06 1:43
 
 Team -- 2020-01-07 1:01
     - Updated design doc and repo
+
+Thompson, Alex -- 2020-01-07 21:10
+    - created skeleton files for both app.py and databaseUtils.py
+    - added comments to each function/route explaining purpose of the function/what must be accomplished
+    - created some basic html templates to be used
