@@ -11,7 +11,7 @@ app = Flask(__name__) #create instance of class Flask
 @app.route("/") #assign following fxn to run when root route requested
 def login():
     print(__name__) #where will this go?
-    return render_template("login.html")
+    return render_template("testBattle.html")
 
 
 @app.route("/register")
