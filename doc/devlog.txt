@@ -26,3 +26,4 @@ thompsonA -- 2020-01-09 TIME
 
 chenJ -- 2020-01-10 9:19
     - Update dbutils with basic functions
+    - Added favicon

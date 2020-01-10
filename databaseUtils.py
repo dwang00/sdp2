@@ -61,7 +61,7 @@ def register(user, passw, startingP):
     addUser(user, passw, startingP)
     return True
 
-def validate(user, passw, ip):
+def validate(user, passw):
     # 0 -> validated
     # 1 -> username wrong
     # 2 -> password wrong
