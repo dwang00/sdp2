@@ -33,7 +33,7 @@ def landing():
     #should get all of the user's data from database
     #should send this data to html file
     #If the user is logging in for the first time, it should gift them their first pokemon
-    return render_template("welcome.html")
+    return render_template("index.html")
 
 @app.route("/setupBattle")
 def setupBattle():
