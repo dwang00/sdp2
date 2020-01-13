@@ -10,7 +10,62 @@ app = Flask(__name__) #create instance of class Flask
 
 @app.route("/") #assign following fxn to run when root route requested
 def login():
+
     print(__name__) #where will this go?
+
+    link = "https://pokeapi.co/api/v2/pokemon/"
+    request = urllib.request.Request(link)
+    request.add_header('User-Agent', 'yes')
+    u = urllib.request.urlopen(request)
+    response = u.read()
+    pokemon = json.loads(response)["results"]
+
+    team1 = {}
+    team2 = {}
+    i = 0
+    while i < 6:
+        link = pokemon[i]["url"]
+        request = urllib.request.Request(link)
+        request.add_header('User-Agent', 'yes')
+        u = urllib.request.urlopen(request)
+        response = u.read()
+        teammate = json.loads(response)
+
+        teammateDict = {}
+        x = 0
+        moves = {}
+        while x < 4:
+            moves = teammate["moves"][x]
+            x++
+        teammateDict['moves'] = moves
+        teammateDict['pic'] = teammate['sprites']['front_default']
+        teammateDict['types'] = teammate['types']
+        teammateDict['stats'] = teammate['stats']
+        team1[teammate['forms'][0]['name']] = teammateDict
+
+        link = pokemon[2 * i]["url"]
+        request = urllib.request.Request(link)
+        request.add_header('User-Agent', 'yes')
+        u = urllib.request.urlopen(request)
+        response = u.read()
+        teammate = json.loads(response)
+
+        teammateDict = {}
+        x = 0
+        moves = {}
+        while x < 4:
+            moves = teammate["moves"][x]
+            x++
+        teammateDict['moves'] = moves
+        teammateDict['pic'] = teammate['sprites']['front_default']
+        teammateDict['types'] = teammate['types']
+        teammateDict['stats'] = teammate['stats']
+        team2[teammate['forms'][0]['name']] = teammateDict
+        i++
+    teams = {}
+    teams['team1'] = team1
+    teams['team2'] = team2
+    print(teams)
     return render_template("testBattle.html")
 
 
