@@ -31,17 +31,15 @@
   <div class="row h-90 w-100">
     <div class="col-sm-1">
       <div class="btn-group-vertical">
-        <button type="button" class="btn btn-secondary"> pokemon 1</button>
-        <button type="button" class="btn btn-secondary"> pokemon 2</button>
-        <button type="button" class="btn btn-secondary"> pokemon 3</button>
-        <button type="button" class="btn btn-secondary"> pokemon 4</button>
-        <button type="button" class="btn btn-secondary"> pokemon 5</button>
-        <button type="button" class="btn btn-secondary"> pokemon 6</button>
+        {% for i in teams['team1'] %}
+          <button type="button" class="btn btn-secondary"> {{teams['team1'][i]['name']}} </button>
+        {% endfor %}
+
       </div>
     </div>
     <div class="col-sm-1">
       <div class="btn-group-vertical">
-        <button type="button" class="btn btn-secondary"> Move 1</button>
+        <button type="button" class="btn btn-secondary"> move 1</button>
         <button type="button" class="btn btn-secondary">Move 2</button>
         <button type="button" class="btn btn-secondary"> Move 3</button>
         <button type="button" class="btn btn-secondary">Move 4</button>
@@ -75,12 +73,9 @@
     </div>
     <div class="col-sm-1">
       <div class="btn-group-vertical">
-        <button type="button" class="btn btn-secondary"> pokemon 1</button>
-        <button type="button" class="btn btn-secondary"> pokemon 2</button>
-        <button type="button" class="btn btn-secondary"> pokemon 3</button>
-        <button type="button" class="btn btn-secondary"> pokemon 4</button>
-        <button type="button" class="btn btn-secondary"> pokemon 5</button>
-        <button type="button" class="btn btn-secondary"> pokemon 6</button>
+        {% for x in teams['team2'] %}
+          <button type="button" class="btn btn-secondary"> {{teams['team2'][x]['name']}} </button>
+        {% endfor %}
       </div>
     </div>
   </div>

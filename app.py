@@ -34,14 +34,22 @@ def login():
         teammateDict = {}
         x = 0
         moves = {}
+        stats = {}
+
         while x < 4:
             moves = teammate["moves"][x]
-            x++
+            x = x + 1
+        x = 0
+        while x < 6:
+            stats[teammate['stats'][x]['stat']['name']] = teammate['stats'][x]['base_stat']
+            x = x + 1
+
         teammateDict['moves'] = moves
         teammateDict['pic'] = teammate['sprites']['front_default']
-        teammateDict['types'] = teammate['types']
-        teammateDict['stats'] = teammate['stats']
-        team1[teammate['forms'][0]['name']] = teammateDict
+        teammateDict['type'] =  teammate['types'][0]['type']['name']
+        teammateDict['stats'] = stats
+        teammateDict['name'] = teammate['forms'][0]['name']
+        team1[i] = teammateDict
 
         link = pokemon[2 * i]["url"]
         request = urllib.request.Request(link)
@@ -53,20 +61,29 @@ def login():
         teammateDict = {}
         x = 0
         moves = {}
+        stats = {}
+
         while x < 4:
             moves = teammate["moves"][x]
-            x++
+            x = x + 1
+        x = 0
+        while x < 6:
+            stats[teammate['stats'][x]['stat']['name']] = teammate['stats'][x]['base_stat']
+            x = x + 1
+
         teammateDict['moves'] = moves
         teammateDict['pic'] = teammate['sprites']['front_default']
-        teammateDict['types'] = teammate['types']
-        teammateDict['stats'] = teammate['stats']
-        team2[teammate['forms'][0]['name']] = teammateDict
-        i++
+        teammateDict['type'] =  teammate['types'][0]['type']['name']
+        teammateDict['stats'] = stats
+        teammateDict['name'] = teammate['forms'][0]['name']
+        team2[i] = teammateDict
+        i = i + 1
+
     teams = {}
     teams['team1'] = team1
     teams['team2'] = team2
-    print(teams)
-    return render_template("testBattle.html")
+    print(teams['team2'])
+    return render_template("testBattle.html", teams = teams)
 
 
 @app.route("/register")
@@ -112,4 +129,4 @@ def pvp():
 
 if __name__ == "__main__":
     app.debug = True
-    app.run()
+    app.run(host='127.0.0.1', port=80)
