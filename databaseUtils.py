@@ -2,7 +2,6 @@ import sqlite3
 
 FILENAME = "data.db"
 
-
 def createUsers():
     db = sqlite3.connect(FILENAME)
     c = db.cursor()
@@ -76,11 +75,6 @@ def validate(user, passw):
 def addPokemon(name):
     #adds specified pokemon to the user's list
     return 0
-
-def getBackground(name):
-    #gets specified background image to be used in the battle
-    imageURL = ""
-    return imageURL
 
 def getRandTeam(level):
     #randomly gets a full team of pokemon to battle against
