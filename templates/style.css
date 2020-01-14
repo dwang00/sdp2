@@ -4,13 +4,10 @@ html *
 }
 
 body {
-    background: url("../static/karp.jpg") no-repeat center center fixed;
+    background: url("../static/welcomeimg.jpg") no-repeat center center fixed;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     background-size: cover;
     -o-background-size: cover;
-}
-
-.link {
-    text-decoration: none;
+    max-width: 100%;
 }

@@ -12,33 +12,35 @@
     <link rel="apple-touch-icon" sizes="180x180" href="../static/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="../static/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="../static/favicon-16x16.png">
-    <link rel="manifest" href="../static/site.webmanifest">
 
     <title> Welcome! </title>
 </head>
 
-<nav class="navbar sticky-top navbar-light navbar-expand-sm" style="background-color: #e3f2fd;">
+<nav class="navbar sticky-top navbar-light navbar-expand-sm" style="background-color: white; opacity: .95;">
     <a class="navbar-brand" href="#">
         <img src="../static/pokeball.png" width="30" height="30" class="d-inline-block align-top">
         Pokemon Showdown
     </a>
 
-    <ul class="navbar-nav">
+    <ul class="nav navbar-nav mr-auto">
         <li class="nav-item">
             <a class="nav-link" href=""> Build </a>
         </li>
         <li class="nav-item">
             <a class="nav-link" href=""> Battle </a>
         </li>
+    </ul>
+
+    <ul class="nav navbar-nav ml-auto">
         <li class="nav-item">
-            <a class="nav-link" href=""> Log out </a>
+            <a class="nav-link" href=""> Logout </a>
         </li>
     </ul>
 </nav>
 
 <body>
     <div class="container">
-        <div class="card border-0 shadow my-5" style = "opacity: .9;">
+        <div class="card border-0 shadow my-5" style = "opacity: .95;">
           <div class="card-body p-5">
             <h2> Welcome {{user}}! </h2>
             TEXT 
@@ -49,14 +51,14 @@
             <h2> Build </h2>
             TEXT 
             <br> <br>
-            <a href="" class ="link"> Build Deck! </a>
+            <a href="" class = "btn btn-light"> Build Deck! </a>
     
             <hr>
     
             <h2> Battle </h2>
             TEXT 
             <br> <br>
-            <a href="" style = "text-decoration: none;"> Battle Now! </a>
+            <a href="" class = "btn btn-light"> Battle Now! </a>
           </div>
 </body>
 
