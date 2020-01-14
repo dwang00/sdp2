@@ -37,7 +37,21 @@ def login():
         stats = {}
 
         while x < 4:
-            moves = teammate["moves"][x]
+            link = teammate['moves'][x]["move"]['url']
+            request = urllib.request.Request(link)
+            request.add_header('User-Agent', 'yes')
+            u = urllib.request.urlopen(request)
+            response = u.read()
+            apimove = json.loads(response)
+
+            move = {
+            "accuracy":apimove['accuracy'],
+            "power":apimove['power'],
+            "dmgclass":apimove['damage_class']['name'],
+            "type":apimove['type']['name'],
+            'name':apimove['name']
+            }
+            moves[x] = move
             x = x + 1
         x = 0
         while x < 6:
@@ -64,7 +78,21 @@ def login():
         stats = {}
 
         while x < 4:
-            moves = teammate["moves"][x]
+            link = teammate['moves'][x]["move"]['url']
+            request = urllib.request.Request(link)
+            request.add_header('User-Agent', 'yes')
+            u = urllib.request.urlopen(request)
+            response = u.read()
+            apimove = json.loads(response)
+
+            move = {
+            "accuracy":apimove['accuracy'],
+            "power":apimove['power'],
+            "dmgclass":apimove['damage_class']['name'],
+            "type":apimove['type']['name'],
+            'name':apimove['name']
+            }
+            moves[x] = move
             x = x + 1
         x = 0
         while x < 6:
@@ -82,7 +110,11 @@ def login():
     teams = {}
     teams['team1'] = team1
     teams['team2'] = team2
-    print(teams['team2'])
+    print(teams['team2'][0])
+    for i in teams['team1'][0]:
+        print(i + ":")
+        print("\n")
+        print(teams['team1'][0][i])
     return render_template("testBattle.html", teams = teams)
 
 
@@ -129,4 +161,4 @@ def pvp():
 
 if __name__ == "__main__":
     app.debug = True
-    app.run(host='127.0.0.1', port=80)
+    app.run()
