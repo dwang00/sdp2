@@ -45,13 +45,13 @@ def login():
             x = x + 1
 
         teammateDict['moves'] = moves
-        teammateDict['pic'] = teammate['sprites']['front_default']
+        teammateDict['pic'] = teammate['sprites']['back_default']
         teammateDict['type'] =  teammate['types'][0]['type']['name']
         teammateDict['stats'] = stats
         teammateDict['name'] = teammate['forms'][0]['name']
         team1[i] = teammateDict
 
-        link = pokemon[2 * i]["url"]
+        link = pokemon[12 - i]["url"]
         request = urllib.request.Request(link)
         request.add_header('User-Agent', 'yes')
         u = urllib.request.urlopen(request)
