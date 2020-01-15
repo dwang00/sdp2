@@ -49,3 +49,5 @@ thompsonA -- 2020-01-14 21:15
     - facilitated turn-swapping and stopping players from pressing buttons when not their turn
     - what must still be done:
       -attack function
+chenJ -- 2020-01-14 22:39
+    - added the html for the build page

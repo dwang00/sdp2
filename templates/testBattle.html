@@ -37,8 +37,8 @@
 <br>
 
 <div class="container-fluid">
-  <div class="row h-90 w-100">
-    <div class="col-sm-1">
+  <div class="row col-sm-12">
+    <div class="col-sm-1 mx-auto">
       <div class="btn-group-vertical">
         {% for i in teams['team1'] %}
           <button type="button" class="btn btn-secondary team1pokemon"> {{teams['team1'][i]['name']}} </button>
@@ -46,14 +46,14 @@
 
       </div>
     </div>
-    <div class="col-sm-1">
+    <div class="col-sm-1 mx-auto">
       <div class="btn-group-vertical">
         {% for i in teams['team1'][0]['moves'] %}
           <button type="button" class="btn btn-secondary team1moves"> {{teams['team1'][0]['moves'][i]['name']}} </button>
         {% endfor %}
       </div>
     </div>
-    <div class="col-sm-6 bg border border-dark">
+    <div class="col-sm-6 bg border border-dark mx-auto">
       <br> <br>
       <div class="row h-90 w-100">
         <div class="col align-self-end">
@@ -71,14 +71,14 @@
         </div>
       </div>
     </div>
-    <div class="col-sm-1">
-      <div class="btn-group-vertical"  >
+    <div class="col-sm-1 mx-auto">
+      <div class="btn-group-vertical">
         {% for i in teams['team2'][3]['moves'] %}
           <button type="button" class="btn btn-secondary team2moves"> {{teams['team2'][3]['moves'][i]['name']}} </button>
         {% endfor %}
       </div>
     </div>
-    <div class="col-sm-1">
+    <div class="col-sm-1 mx-auto">
       <div class="btn-group-vertical">
         {% for x in teams['team2'] %}
           <button type="button" class="btn btn-secondary team2pokemon"> {{teams['team2'][x]['name']}} </button>
