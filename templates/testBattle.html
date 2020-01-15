@@ -68,14 +68,14 @@
             <div id="team2health" class="progress-bar active" role="progressbar" style="width: 100%" aria-valuenow={{teams['team2'][0]['stats']['hp']}} aria-valuemin="0" aria-valuemax={{teams['team2'][0]['stats']['hp']}}>
             </div>
           </div>
-          <img src={{teams['team2'][3]['pic']}} id="team2pic" class="img-fluid h-70 w-30" style="height:350px; width:350px">
+          <img src={{teams['team2'][0]['pic']}} id="team2pic" class="img-fluid h-70 w-30" style="height:350px; width:350px">
         </div>
       </div>
     </div>
     <div class="col-sm-1 mx-auto">
       <div class="btn-group-vertical">
-        {% for i in teams['team2'][3]['moves'] %}
-          <button type="button" class="btn btn-secondary team2moves"> {{teams['team2'][3]['moves'][i]['name']}} </button>
+        {% for i in teams['team2'][0]['moves'] %}
+          <button type="button" class="btn btn-secondary team2moves"> {{teams['team2'][0]['moves'][i]['name']}} </button>
         {% endfor %}
       </div>
     </div>

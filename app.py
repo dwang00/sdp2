@@ -209,7 +209,7 @@ def getPokemonByID(i, direction):
     while x < 6:
         stats[teammate['stats'][x]['stat']['name']] = teammate['stats'][x]['base_stat']
         x = x + 1
-
+    stats['startingHp'] = stats['hp']
     teammateDict['moves'] = moves
     if (direction == "front"):
         teammateDict['pic'] = teammate['sprites']['front_default']
