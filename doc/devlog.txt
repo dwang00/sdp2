@@ -21,12 +21,31 @@ chenJ -- 2020-01-08 09:26
 wangD -- 2020-01-09 09:23
     - Updated devlog so paths match paths in app.py
 
-thompsonA -- 2020-01-09 TIME
-    -
+thompsonA -- 2020-01-09 9:26
+    - started interaction with pokeapi
+    - started login page
+    - trying to compile and organize the necessary data
 
 chenJ -- 2020-01-10 9:19
     - Update dbutils with basic functions
     - Added favicon
 
+thompsonA -- 2020-01-11 3:30
+    - organizing API interaction further
+    - needed to make sure that every time teams are formed, all of the necessary data is gotten from the API
+    - this includes moves, stats, type, etc
+
 chenJ -- 2020-01-13 11:23
     - Added more content to html files
+
+thompsonA -- 2020-01-13 10:24
+    - Finalized API interaction and began working on python/HTML interaction
+    - HTML files will display the moves/pokemon fed into it
+    - page is however not yet dynamic
+
+thompsonA -- 2020-01-14 21:15
+    - making testbattle.html into a dynamic page by adding battleScript.js
+    - facilitated switching in and out of pokemon
+    - facilitated turn-swapping and stopping players from pressing buttons when not their turn
+    - what must still be done:
+      -attack function
