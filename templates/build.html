@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway&display=swap">
+    <link rel="stylesheet" href="../static/style2.css">
+
+    <link rel="apple-touch-icon" sizes="180x180" href="../static/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="../static/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="../static/favicon-16x16.png">
+
+    <title> Build Your Team! </title>
+</head>
+
+<nav class="navbar sticky-top navbar-light navbar-expand-sm" style="background-color: white; opacity: .9;">
+    <a class="navbar-brand" href="/welcome">
+        <img src="../static/pokeball.png" width="30" height="30" class="d-inline-block align-top">
+        Pokemon Showdown
+    </a>
+
+    <ul class="nav navbar-nav mr-auto">
+        <li class="nav-item">
+            <a class="nav-link button active" href="/build"> Build </a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href=""> Battle </a>
+        </li>
+    </ul>
+
+    <ul class="nav navbar-nav ml-auto">
+        <li class="nav-item">
+            <a class="nav-link" href=""> Logout </a>
+        </li>
+    </ul>
+</nav>
+
+<body class="build">
+    <script src = "../static/build.js"> </script>
+
+    <div class="row col-sm-12">
+        <div class="col-sm-6">
+            <div class="card border-0 shadow my-5 ml-5" style="opacity: .9;">
+                <div class="card-body p-5">
+                    <h2 class = "card-title"> Choose a Pokemon </h2>
+
+                    <form>
+                        <div class="form-inline">
+                            <select class="form-control col-sm-6">
+                              <option> 1 </option>
+                              <option> 2 </option>
+                            </select>
+
+                            <button type="submit" class="btn btn-light"> Pick </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-sm-6">
+            <div class="card border-0 shadow my-5 mr-5" style="opacity: .9;">
+                <div class="card-body p-5">
+                    <h2 class = "card-title"> Choose a Move </h2>
+
+                    <form>
+                        <div class="form-inline">
+                            <select class="form-control col-sm-6">
+                              <option> 1 </option>
+                              <option> 2 </option>
+                            </select>
+
+                            <button type="submit" class="btn btn-light"> Pick </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row col-sm-12">
+        <div class="col-sm-6">
+            <div class="card border-0 shadow my-5 ml-5" style="opacity: .9;">
+                <div class="card-body p-5">
+                    <h2 class = "card-title"> Current Pokemon: {{name}} </h2>
+
+                    <div class="col-sm-4">
+                        <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/6.png" class="img-fluid" alt="">
+                    </div>
+
+                    <h3> Moves: </h3>
+
+                    <button type="submit" class="btn btn-light"> I'm Finished! </button>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-sm-6">
+            <div class="card border-0 shadow my-5 mr-5" style="opacity: .9;">
+                <div class="card-body p-5">
+                    <h2 class = "card-title text-center"> Current Team: </h2>
+
+                    <div class="row col-sm-6 mx-auto">
+                        <div class="col-sm-4">
+                            <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/6.png" class="img-fluid" alt="">
+                        </div>
+
+                        <div class="col-sm-4">
+                            <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/6.png" class="img-fluid" alt="">
+                        </div>
+
+                        <div class="col-sm-4">
+                            <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/6.png" class="img-fluid" alt="">
+                        </div>
+
+                        <div class="col-sm-4">
+                            <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/6.png" class="img-fluid" alt="">
+                        </div>
+
+                        <div class="col-sm-4">
+                            <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/6.png" class="img-fluid" alt="">
+                        </div>
+
+                        <div class="col-sm-4">
+                            <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/6.png" class="img-fluid" alt="">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
