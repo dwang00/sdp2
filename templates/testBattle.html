@@ -1,3 +1,8 @@
+
+
+<meta id="teamsJson" name="{{teamsJson}}">
+
+
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -27,7 +32,11 @@
 </nav>
 
 <br>
-<div class="container-fluid justify-content-center">
+<center>
+<h3 class="text-primary" id="turnIndicator"> Player 1's Turn </h3>
+<br>
+
+<div class="container-fluid">
   <div class="row h-90 w-100">
     <div class="col-sm-1">
       <div class="btn-group-vertical">
@@ -39,10 +48,9 @@
     </div>
     <div class="col-sm-1">
       <div class="btn-group-vertical">
-        <button type="button" class="btn btn-secondary"> move 1</button>
-        <button type="button" class="btn btn-secondary">Move 2</button>
-        <button type="button" class="btn btn-secondary"> Move 3</button>
-        <button type="button" class="btn btn-secondary">Move 4</button>
+        {% for i in teams['team1'][0]['moves'] %}
+          <button type="button" class="btn btn-secondary"> {{teams['team1'][0]['moves'][i]['name']}} </button>
+        {% endfor %}
       </div>
     </div>
     <div class="col-sm-6 bg border border-dark">
@@ -65,10 +73,9 @@
     </div>
     <div class="col-sm-1">
       <div class="btn-group-vertical">
-        <button type="button" class="btn btn-secondary"> Move 1</button>
-        <button type="button" class="btn btn-secondary">Move 2</button>
-        <button type="button" class="btn btn-secondary"> Move 3</button>
-        <button type="button" class="btn btn-secondary">Move 4</button>
+        {% for i in teams['team2'][3]['moves'] %}
+          <button type="button" class="btn btn-secondary"> {{teams['team2'][3]['moves'][i]['name']}} </button>
+        {% endfor %}
       </div>
     </div>
     <div class="col-sm-1">
@@ -80,3 +87,6 @@
     </div>
   </div>
 </div>
+</center>
+
+<script src="../static/battleScript.js"></script>
