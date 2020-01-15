@@ -1,6 +1,7 @@
 var turnsPassed = 0;
 var mode = 1;
 var teams = JSON.parse(document.getElementById("teamsJson").name);
+var currentPokemon = {"team1": teams['team1'][0], "team2": teams['team1'][0]};
 // console.log(teams);
 
 
@@ -24,7 +25,7 @@ var updatePage = function(){
     }
     for (var i = 0; i < pokemon.length; i++){
       pokemon[i].disabled = false;
-      pokemon[i].addEventListener("click", switchPokemon)
+      pokemon[i].addEventListener("click", switchPokemon);
     }
   } else {
     mode = 2;
@@ -61,14 +62,24 @@ var switchPokemon = function(e) {
         x = i;
       }
     }
-    document.getElementById("team1pic").src = teams['team1'][x]['pic']
+    document.getElementById("team1pic").src = teams['team1'][x]['pic'];
+    currentPokemon['team1'] = teams['team1'][x];
+    var moves = document.getElementsByClassName("team1moves");
+    for (var i = 0; i < 4; i++){
+      moves[i].innerHTML = currentPokemon['team1']['moves'][i]['name'];
+    }
   } else if (mode == 2){
     for (var i = 0; i < 6; i++){
       if (teams['team2'][i]['name'] == e.target.innerText){
         x = i;
       }
     }
-    document.getElementById("team2pic").src = teams['team2'][x]['pic']
+    document.getElementById("team2pic").src = teams['team2'][x]['pic'];
+    currentPokemon['team2'] = teams['team2'][x];
+    var moves = document.getElementsByClassName("team2moves")
+    for (var i = 0; i < 4; i++){
+      moves[i].innerHTML = currentPokemon['team2']['moves'][i]['name'];
+    }
   }
   turnsPassed++;
   updatePage();
