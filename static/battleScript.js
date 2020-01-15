@@ -1,3 +1,6 @@
+
+
+
 var turnsPassed = 0;
 var mode = 1;
 var teams = JSON.parse(document.getElementById("teamsJson").name);
@@ -68,6 +71,9 @@ var switchPokemon = function(e) {
     for (var i = 0; i < 4; i++){
       moves[i].innerHTML = currentPokemon['team1']['moves'][i]['name'];
     }
+    healthbar = document.getElementById("team1health");
+    healthbar.attributes[4]['value'] = currentPokemon['team1']['stats']['hp'];
+    healthbar.attributes[6]['value'] = currentPokemon['team1']['stats']['hp'];
   } else if (mode == 2){
     for (var i = 0; i < 6; i++){
       if (teams['team2'][i]['name'] == e.target.innerText){
@@ -80,6 +86,9 @@ var switchPokemon = function(e) {
     for (var i = 0; i < 4; i++){
       moves[i].innerHTML = currentPokemon['team2']['moves'][i]['name'];
     }
+    healthbar = document.getElementById("team2health");
+    healthbar.attributes[4]['value'] = currentPokemon['team2']['stats']['hp'];
+    healthbar.attributes[6]['value'] = currentPokemon['team2']['stats']['hp'];
   }
   turnsPassed++;
   updatePage();
@@ -87,7 +96,44 @@ var switchPokemon = function(e) {
 }
 
 var attack = function(e) {
+  var team = "";
+  var otherTeam = "";
+  if (mode == 1){
+    team = "team1";
+    otherTeam = "team2";
+  } else {
+    team = "team2";
+    otherTeam = "team1";
+  }
+  var movename = e.target['innerText'];
+  var move = {};
+  for (var i = 0; i < 4; i++){
+    if (movename == currentPokemon[team]['moves'][i]['name']){
+      move = currentPokemon[team]['moves'][i];
+    }
+  }
+  console.log(currentPokemon[team]['stats']['special-attack']);
+  var A = 0;
+  var D = 0;
+  if (move['dmgclass'] == "special"){
+    A = currentPokemon[team]['stats']['special-attack'];
+    D = currentPokemon[otherTeam]['stats']['special-defense'];
+  } else {
+    A = currentPokemon[team]['stats']['attack']
+    D = currentPokemon[otherTeam]['stats']['defense']
+  }
 
+  var B = move['power'];
+  var damage = Math.floor(((2 * 100 + 10) / 250) * (A / D) * B + 2) / 6;
+  var healthbar = document.getElementById(otherTeam + "health");
+  console.log(healthbar)
+  healthbar.attributes[4]['value'] = healthbar.attributes[4]['value'] - damage;
+
+  healthbar.attributes[3]['value'] = "width:" + Math.floor(100 * (healthbar.attributes[4]['value'] / (currentPokemon[otherTeam]['stats']['hp']))) + "%";
+  currentPokemon[otherTeam]['stats']['hp'] = healthbar.attributes[4]['value'];
+
+  turnsPassed++;
+  updatePage();
 }
 
 updatePage();

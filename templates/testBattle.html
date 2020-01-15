@@ -58,14 +58,15 @@
       <div class="row h-90 w-100">
         <div class="col align-self-end">
           <div class="progress">
-            <div class="progress-bar" role="progressbar" style="width: 100%" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100">
+            <div id="team1health" class="progress-bar active" role="progressbar" style="width: 100%" aria-valuenow={{teams['team1'][0]['stats']['hp']}} aria-valuemin="0" aria-valuemax={{teams['team1'][0]['stats']['hp']}}>
             </div>
           </div>
           <img src={{teams['team1'][0]['pic']}} id="team1pic" class="img-fluid h-70 w-30" style="height:350px; width:350px">
         </div>
         <div class="col align-self-end">
           <div class="progress">
-            <div class="progress-bar" role="progressbar" style="width: 100%" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
+            <div id="team2health" class="progress-bar active" role="progressbar" style="width: 100%" aria-valuenow={{teams['team2'][0]['stats']['hp']}} aria-valuemin="0" aria-valuemax={{teams['team2'][0]['stats']['hp']}}>
+            </div>
           </div>
           <img src={{teams['team2'][3]['pic']}} id="team2pic" class="img-fluid h-70 w-30" style="height:350px; width:350px">
         </div>
