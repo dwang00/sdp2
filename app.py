@@ -8,7 +8,7 @@ import math
 
 app = Flask(__name__) #create instance of class Flask
 
-@app.route("/") #assign following fxn to run when root route requested
+@app.route("/a") #assign following fxn to run when root route requested
 def login():
 
     print(__name__) #where will this go?
@@ -150,7 +150,12 @@ def landing():
     #If the user is logging in for the first time, it should gift them their first pokemon
     return render_template("index.html")
 
-@app.route("/setupBattle")
+@app.route("/")
+def build():
+    #
+    return render_template("build.html")
+
+""" @app.route("/setupBattle")
 def setupBattle():
     #takes in selected pokemon for battle
     #checks whether battle is set for pvp or pvNPC
@@ -168,7 +173,7 @@ def game():
 def pvp():
     #should get users selected pokemon
     #runs game in JS
-    return render_template("pvp.html")
+    return render_template("pvp.html") """
 
 def getPokemonByID(i, direction):
     link = "https://pokeapi.co/api/v2/pokemon/" + str(i)
