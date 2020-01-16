@@ -23,6 +23,7 @@ def cacheMoves():
         request.add_header('User-Agent', 'yes')
         u = urllib.request.urlopen(request)
         response = u.read()
+        id = (json.loads(response)["id"])
         name = (json.loads(response)["name"]).replace("-", " ")
         eff = (json.loads(response)["effect_entries"][0]["short_effect"])
         eff = ((eff.replace("é", "e")).replace("\'", "\'\'")).replace("$effect_chance%", "{}")
@@ -42,6 +43,6 @@ def cacheMoves():
             cmd = "SELECT * FROM moves WHERE name = '{}'".format(name)
         q = runsqlcommand(cmd)
         if len(q) == 0:
-            ins = "INSERT INTO moves VALUES('{}', '{}', '{}', '{}', {}, {}, {})".format(name, eff, dcl, type, pp, dmg, acc)
+            ins = "INSERT INTO moves VALUES({}, '{}', '{}', '{}', '{}', {}, {}, {})".format(id, name, eff, dcl, type, pp, dmg, acc)
             runsqlcommand(ins)
         i+=1
