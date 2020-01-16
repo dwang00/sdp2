@@ -20,10 +20,10 @@ moveButton.addEventListener("click", loadMove);
 var finishPokemon = document.getElementById("finishPokemon");
 finishPokemon.addEventListener("click", finishPokemon);
 
-var loadPokemon = function(e) {
-    var image = document.getElementById("pdisplay");
-    image.src = "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/6.png";
-}
+// var loadPokemon = function(e) {
+//     var image = document.getElementById("pdisplay");
+//     image.src = "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/6.png";
+// }
 
 var loadPokemon = function(e){
 //  console.log(e);
