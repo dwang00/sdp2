@@ -73,7 +73,7 @@ def landing():
     #should get all of the user's data from database
     #should send this data to html file
     #If the user is logging in for the first time, it should gift them their first pokemon
-    team = request.args['team']
+    team = request.args["team"]
     print(team)
     return render_template("index.html")
 
