@@ -9,8 +9,10 @@ from cache import runsqlcommand, cacheMoves, cachePokemon
 import databaseUtils as help
 
 allPokemon = cachePokemon()
+allTeams = {}
 app = Flask(__name__) #create instance of class Flask
 app.secret_key = os.urandom(32)
+
 
 @app.route("/battle") #assign following fxn to run when root route requested
 def battle():
@@ -41,6 +43,11 @@ def battle():
 def register():
     return render_template("register.html")
 
+@app.route("/setupBattle")
+def setupBattle():
+
+    return render_template("setup.html", teams = session['teams'])
+
 @app.route("/addUser")
 def addUser():
     username = request.args["username"]
@@ -65,6 +72,8 @@ def auth():
         return redirect(url_for("first"))
     else:
         session["username"] = username
+        global numTeams
+        numTeams = 0
         print("Logged into account with username: " + username)
         return render_template("index.html")
 
@@ -74,7 +83,11 @@ def landing():
     #should send this data to html file
     #If the user is logging in for the first time, it should gift them their first pokemon
     team = request.args["team"]
-    print(team)
+    # if len(allSavedTeams) == 0:
+    #     numberSavedTeams = 0
+    allTeams[numTeams] = team
+    numTeams = numTeams + 1
+    print(session['teams'])
     return render_template("index.html")
 
 @app.route("/logout")

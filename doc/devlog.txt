@@ -58,3 +58,11 @@ wangD -- 2020-01-15 10:10
 
 wangD -- 2020-01-16 00:39
     - cached pokemon
+
+thompsonA -- 2020-01-16 1:30
+    - battle mechanics entirely complete
+    - players can win/lose
+    - finished teambuilder
+    - only issue is that no matter what I try, I can't find a place to properly store each team. There should be a function that does so in the database
+    - Everything but actually battling and saving teams is working
+    - Hardcoded battle does still work
