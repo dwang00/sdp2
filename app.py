@@ -5,7 +5,7 @@ import json
 import os
 import math
 import sqlite3
-from cache import runsqlcommand, cacheMoves
+from cache import runsqlcommand, cacheMoves, cachePokemon
 
 
 app = Flask(__name__) #create instance of class Flask
@@ -185,6 +185,8 @@ def getPokemonByID(i, direction, moveslist):
     response = u.read()
     teammate = json.loads(response)
     
+
+
 
 
     teammateDict = {}

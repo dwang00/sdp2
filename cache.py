@@ -46,3 +46,40 @@ def cacheMoves():
             ins = "INSERT INTO moves VALUES({}, '{}', '{}', '{}', '{}', {}, {}, {})".format(id, name, eff, dcl, type, pp, dmg, acc)
             runsqlcommand(ins)
         i+=1
+
+def cachePokemon():
+    i = 1
+    while i <= 151:
+        link = "https://pokeapi.co/api/v2/pokemon/{}".format(i)
+        request = urllib.request.Request(link)
+        request.add_header('User-Agent', 'yes')
+        u = urllib.request.urlopen(request)
+        response = u.read()
+        n = json.loads(response)["name"]
+        #e = "DROP TABLE \"{}\"".format(n)
+        #runsqlcommand(e)
+        d = "CREATE TABLE \"{}\" (move TEXT)".format(n)
+        print(n)
+        print(d)
+        runsqlcommand(d)
+        c = json.loads(response)["moves"]
+        z = 0
+        a = "SELECT name FROM MOVES"
+        b = runsqlcommand(a)
+        #print(b)
+        while z < len(c):
+            name = (c[z]['move']['name']).replace("-", " ")
+            num = int(((c[z]['move']['url']).replace("https://pokeapi.co/api/v2/move/", "")).replace("/", ""))
+            #url = c[z]['move']['url']
+            if num <= 165:
+                cmd = "SELECT * FROM \"{}\"".format(n)
+                r = runsqlcommand(cmd)
+                if len(r) > 0:
+                    cmd = "SELECT * FROM \"{}\" WHERE move = '{}'".format(n, name)
+                q = runsqlcommand(cmd)
+                if len(q) == 0:
+                    ins = "INSERT INTO \"{}\" VALUES('{}')".format(n, name)
+                    #print(ins)
+                    runsqlcommand(ins)
+            z += 1
+        i += 1
