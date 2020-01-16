@@ -8,7 +8,7 @@ import sqlite3
 from cache import runsqlcommand, cacheMoves, cachePokemon
 import databaseUtils as help
 
-# allPokemon = cachePokemon()
+allPokemon = cachePokemon()
 app = Flask(__name__) #create instance of class Flask
 app.secret_key = os.urandom(32)
 
@@ -84,7 +84,8 @@ def logout():
 
 @app.route("/build")
 def build():
-    return render_template("build.html", allPokemon = allPokemon)
+    allPokemonJson = json.dumps(allPokemon)
+    return render_template("build.html", allPokemon = allPokemon, allPokemonJson = allPokemonJson)
 
 @app.route("/")
 def first():

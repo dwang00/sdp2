@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-    <meta id="allPokemonJson" name="{{allPokemon}}">
+    <meta id="allPokemonJson" name="{{allPokemonJson}}">
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
@@ -41,7 +41,6 @@
 </nav>
 
 <body class="build">
-    <script src = "../static/build.js"></script>
 
     <div class="row col-sm-12">
         <div class="col-sm-6">
@@ -49,17 +48,14 @@
                 <div class="card-body p-5">
                     <h2 class = "card-title"> Choose a Pokemon </h2>
 
-                    <form>
-                        <div class="form-inline">
-                            <select class="form-control col-sm-6">
+                        <div class="dropdown col-sm-6" id = "pokemonDropdown">
+                            <select class="form-control col-sm-6 dropdown" id="pokemonDropdown">
                               {% for i in allPokemon %}
                                 <option> {{allPokemon[i]['name']}} </option>
                               {% endfor %}
                             </select>
-
-                            <button type="button" class="btn btn-light" id = "pokemonButton"> Pick </button>
+                            <button id ="pokemonButton" type="button" class="btn btn-light" > Pick </button>
                         </div>
-                    </form>
                 </div>
             </div>
         </div>
@@ -136,5 +132,5 @@
         </div>
     </div>
 </body>
-
+<script src = "../static/build.js"></script>
 </html>
