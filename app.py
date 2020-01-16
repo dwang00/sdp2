@@ -19,23 +19,36 @@ def battle():
 
     print(__name__) #where will this go?
 
-    team1 = {}
-    team2 = {}
-    teams = {}
-    teams['team1'] = team1
-    teams['team2'] = team2
-
-    teams = {}
-
-    x = 1
-    while (x < 7):
-        team1[x - 1] = getPokemonByID(x, "back", [0, 1, 2, 3])
-        team2[x - 1] = getPokemonByID(7 * x, "front", [0, 1, 2, 3])
-        x = x + 1
+    # team1 = {}
+    # team2 = {}
+    # teams = {}
+    # teams['team1'] = team1
+    # teams['team2'] = team2
+    #
+    # teams = {}
+    #
+    # x = 1
+    # while (x < 7):
+    #     team1[x - 1] = getPokemonByID(x, "back", [0, 1, 2, 3])
+    #     team2[x - 1] = getPokemonByID(7 * x, "front", [0, 1, 2, 3])
+    #     x = x + 1
+    # teams['team1'] = team1
+    # teams['team2'] = team2
+    # teamsJson = json.dumps(teams)
+    # #print(teamsJson)
+    team1 = allTeams[request.args['team1']]
+    team2 = allTeams[request.args['team2']]
+    print(team1)
+    print(team2)
+    newTeam1 = {}
+    newTeam2 = {}
+    for i in team1:
+        newTeam1[i] = getPokemonByID(team1[i]['id'], 'back', team1[i]['moves'])
+    for i in team2:
+        newTeam2[i] = getPokemonByID(team2[i]['id'], 'front', team2[i]['moves'])
     teams['team1'] = team1
     teams['team2'] = team2
     teamsJson = json.dumps(teams)
-    #print(teamsJson)
     return render_template("testBattle.html", teams = teams, teamsJson = teamsJson)
 
 
@@ -46,7 +59,7 @@ def register():
 @app.route("/setupBattle")
 def setupBattle():
 
-    return render_template("setup.html", teams = session['teams'])
+    return render_template("setup.html", teams = allTeams)
 
 @app.route("/addUser")
 def addUser():
@@ -72,8 +85,6 @@ def auth():
         return redirect(url_for("first"))
     else:
         session["username"] = username
-        global numTeams
-        numTeams = 0
         print("Logged into account with username: " + username)
         return render_template("index.html")
 
@@ -85,9 +96,9 @@ def landing():
     team = request.args["team"]
     # if len(allSavedTeams) == 0:
     #     numberSavedTeams = 0
-    allTeams[numTeams] = team
-    numTeams = numTeams + 1
-    print(session['teams'])
+    totalTeams = len(allTeams)
+    allTeams[totalTeams] = team
+    print(allTeams)
     return render_template("index.html")
 
 @app.route("/logout")
