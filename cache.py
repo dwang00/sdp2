@@ -93,5 +93,3 @@ def getMoves(name):
     for i in arr:
         print(i)
     return(arr)
-
-print(getMoves("bulbasaur"))
