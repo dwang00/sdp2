@@ -70,12 +70,43 @@ def validate(user, passw):
         return 2
     return 0
 
-def addPokemon(name):
-    #adds specified pokemon to the user's list
-    return 0
+def createTeams():
+    db = sqlite3.connect(FILENAME)
+    c = db.cursor()
 
-def getRandTeam(level):
-    #randomly gets a full team of pokemon to battle against
-    #if we have time add level so that we sometimes filter to stronger pokemon
-    team = {}
-    return team
+    command = "CREATE TABLE IF NOT EXISTS teams (data TEXT)"
+    c.execute(command)
+
+    db.commit()
+    db.close()
+
+def addTeam(pokeDict):
+    db = sqlite3.connect(FILENAME)
+    c = db.cursor()
+
+    data = ""
+    for pokemon in pokeDict:
+        data += pokemon
+        for move in pokeDict[pokemon]:
+            data = data + " " + move
+        data += ","
+
+    command = 'INSERT INTO teams VALUES ({})'
+    command = command.format(data)
+    c.execute(command)
+
+    db.commit()
+    db.close()
+
+def getTeams():
+    db = sqlite3.connect(FILENAME)
+    c = db.cursor()
+
+    pokeDict = {}
+
+    c.execute("SELECT * FROM users")
+    s = c.fetchall()
+
+    db.commit()
+    db.close()
+    return pokeDict   

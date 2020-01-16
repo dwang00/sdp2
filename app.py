@@ -90,6 +90,7 @@ def build():
 @app.route("/")
 def first():
     help.createUsers()
+    help.createTeams()
     if "username" in session:
         return redirect(url_for("a"))
     else:
