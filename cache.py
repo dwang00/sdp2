@@ -55,17 +55,17 @@ def cachePokemon():
         request.add_header('User-Agent', 'yes')
         u = urllib.request.urlopen(request)
         response = u.read()
-        n = json.loads(response)["name"]
+        poke = json.loads(response)["name"]
         #e = "DROP TABLE \"{}\"".format(n)
         #runsqlcommand(e)
         d = "CREATE TABLE \"{}\" (move TEXT)".format(n)
-        print(n)
-        print(d)
+        # print(n)
+        # print(d)
         runsqlcommand(d)
         c = json.loads(response)["moves"]
         z = 0
-        a = "SELECT name FROM MOVES"
-        b = runsqlcommand(a)
+        # a = "SELECT name FROM MOVES"
+        # b = runsqlcommand(a)
         #print(b)
         while z < len(c):
             name = (c[z]['move']['name']).replace("-", " ")
@@ -75,10 +75,10 @@ def cachePokemon():
                 cmd = "SELECT * FROM \"{}\"".format(n)
                 r = runsqlcommand(cmd)
                 if len(r) > 0:
-                    cmd = "SELECT * FROM \"{}\" WHERE move = '{}'".format(n, name)
+                    cmd = "SELECT * FROM \"{}\" WHERE move = '{}'".format(poke, name)
                 q = runsqlcommand(cmd)
                 if len(q) == 0:
-                    ins = "INSERT INTO \"{}\" VALUES('{}')".format(n, name)
+                    ins = "INSERT INTO \"{}\" VALUES('{}')".format(poke, name)
                     #print(ins)
                     runsqlcommand(ins)
             z += 1
