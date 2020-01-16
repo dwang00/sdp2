@@ -119,8 +119,8 @@ def login():
 
     x = 1
     while (x < 7):
-        team1[x - 1] = getPokemonByID(x, "back")
-        team2[x - 1] = getPokemonByID(7 * x, "front")
+        team1[x - 1] = getPokemonByID(x, "back", [0, 1, 2, 3])
+        team2[x - 1] = getPokemonByID(7 * x, "front", [0, 1, 2, 3])
         x = x + 1
     teams['team1'] = team1
     teams['team2'] = team2
@@ -175,13 +175,15 @@ def pvp():
     #runs game in JS
     return render_template("pvp.html") """
 
-def getPokemonByID(i, direction, moves):
+def getPokemonByID(i, direction, moveslist):
     link = "https://pokeapi.co/api/v2/pokemon/" + str(i)
     request = urllib.request.Request(link)
     request.add_header('User-Agent', 'yes')
     u = urllib.request.urlopen(request)
     response = u.read()
     teammate = json.loads(response)
+    
+
 
     teammateDict = {}
     x = 0
@@ -189,7 +191,7 @@ def getPokemonByID(i, direction, moves):
     stats = {}
 
     while x < 4:
-        link = teammate['moves'][moves[x]]["move"]['url']
+        link = teammate['moves'][moveslist[x]]["move"]['url']
         request = urllib.request.Request(link)
         request.add_header('User-Agent', 'yes')
         u = urllib.request.urlopen(request)
