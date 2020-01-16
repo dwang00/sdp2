@@ -90,6 +90,4 @@ def getMoves(name):
     arr = []
     for i in r:
         arr.append(i[0])
-    for i in arr:
-        print(i)
     return(arr)
