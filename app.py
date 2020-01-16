@@ -4,6 +4,8 @@ import urllib
 import json
 import os
 import math
+import sqlite3
+from cache import runsqlcommand, cacheMoves
 
 
 app = Flask(__name__) #create instance of class Flask
