@@ -83,3 +83,15 @@ def cachePokemon():
                     runsqlcommand(ins)
             z += 1
         i += 1
+
+def getMoves(name):
+    c = "SELECT * FROM {}".format(name)
+    r = runsqlcommand(c)
+    arr = []
+    for i in r:
+        arr.append(i[0])
+    for i in arr:
+        print(i)
+    return(arr)
+
+print(getMoves("bulbasaur"))
