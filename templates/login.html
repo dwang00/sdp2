@@ -16,8 +16,19 @@ DOES NOT WORK -->
   <div class="container">
     <div class="card border-0 shadow my-5">
       <div class="card-body p-5">
+        {% with messages = get_flashed_messages(with_categories=true) %}
+        <!-- Categories: success (green), info (blue), warning (yellow), danger (red) -->
+        {% if messages %}
+        {% for category, message in messages %}
+        <div class="alert alert-danger" role="alert">
+          <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          <!-- <strong>Title</strong> --> {{ message }}
+        </div>
+        {% endfor %}
+        {% endif %}
+        {% endwith %}
         {%if error%}
-          <h2><font color="red"> {{error}} </font></h2>
+        <h2><font color="red"> {{error}} </font></h2>
         {%endif%}
         <form action="/auth" class="was-validated">
           <div class="form-group">
@@ -39,5 +50,6 @@ DOES NOT WORK -->
     </div>
   </div>
 </body>
+
 
 </html>
