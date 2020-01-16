@@ -9,6 +9,31 @@ var currentPokemon = {"team1": teams['team1'][0], "team2": teams['team2'][0]};
 
 
 var updatePage = function(){
+  var team1pokemon = document.getElementsByClassName("team1pokemon");
+  //console.log(team1pokemon);
+  for (var i = 0; i < 6; i++){
+    if (team1pokemon[i]['innerText'] == currentPokemon['team1']['name']){
+    //  console.log(team1pokemon[i]['innerText']);
+      team1pokemon[i]['attributes'][1]['value'] = "btn btn-primary team1pokemon";
+    } else {
+      team1pokemon[i]['attributes'][1]['value'] = "btn btn-secondary team1pokemon";
+    }
+    if (teams['team1'][i]['stats']['hp'] <= 0){
+      console.log(teams['team1'][i]['stats']['hp']);
+      team1pokemon[i].disabled = true;
+    }
+  }
+  var team2pokemon = document.getElementsByClassName("team2pokemon");
+  for (var i = 0; i < 6; i++){
+    if (team2pokemon[i]['innerText'] == currentPokemon['team2']['name']){
+      team2pokemon[i]['attributes'][1]['value'] = "btn btn-primary team2pokemon";
+    } else {
+      team2pokemon[i]['attributes'][1]['value'] = "btn btn-secondary team2pokemon";
+    }
+    if (teams['team2'][i]['stats']['hp'] <= 0){
+      team2pokemon[i].disabled = true;
+    }
+  }
   if (turnsPassed % 2 == 0){
     mode = 1;
     document.getElementById("turnIndicator").innerHTML = "Player 1's Turn";
@@ -27,8 +52,10 @@ var updatePage = function(){
       moves[i].addEventListener("click", attack);
     }
     for (var i = 0; i < pokemon.length; i++){
-      pokemon[i].disabled = false;
-      pokemon[i].addEventListener("click", switchPokemon);
+      if (teams['team1'][i]['stats']['hp'] > 0){
+        pokemon[i].disabled = false;
+        pokemon[i].addEventListener("click", switchPokemon);
+      }
     }
   } else {
     mode = 2;
@@ -48,8 +75,10 @@ var updatePage = function(){
       moves[i].addEventListener("click", attack);
     }
     for (var i = 0; i < pokemon.length; i++){
-      pokemon[i].disabled = false;
-      pokemon[i].addEventListener("click", switchPokemon)
+      if (teams['team2'][i]['stats']['hp'] > 0){
+        pokemon[i].disabled = false;
+        pokemon[i].addEventListener("click", switchPokemon);
+      }
     }
   }
 }
@@ -92,13 +121,14 @@ var switchPokemon = function(e) {
     healthbar.attributes[6]['value'] = currentPokemon['team2']['stats']['hp'];
     healthbar.attributes[3]['value'] = "width:" + Math.floor(100 * (healthbar.attributes[4]['value'] / (currentPokemon['team2']['stats']['startingHp']))) + "%";
   }
+  closeModal();
   turnsPassed++;
   updatePage();
 
 }
 
 var attack = function(e) {
-  console.log(currentPokemon);
+//  console.log(currentPokemon);
   var team = "";
   var otherTeam = "";
   if (mode == 1){
@@ -127,18 +157,60 @@ var attack = function(e) {
   // console.log(A);
   // console.log(D);
   var B = move['power'];
-  console.log(move);
-  console.log(currentPokemon[team]);
+//  console.log(move);
+  //console.log(currentPokemon[team]);
   var damage = Math.floor(((2 * 100 + 10) / 250) * (A / D) * B + 2) / 6;
-  console.log(damage);
+  //console.log(damage);
   var healthbar = document.getElementById(otherTeam + "health");
   healthbar.attributes[4]['value'] = healthbar.attributes[4]['value'] - damage;
 
   healthbar.attributes[3]['value'] = "width:" + Math.floor(100 * (healthbar.attributes[4]['value'] / (currentPokemon[otherTeam]['stats']['startingHp']))) + "%";
   currentPokemon[otherTeam]['stats']['hp'] = healthbar.attributes[4]['value'];
+//  console.log(currentPokemon[otherTeam]['stats']['hp']);
+  if (currentPokemon[otherTeam]['stats']['hp'] <= 0){
 
+    var pokemon = document.getElementsByClassName("modalpokemon");
+    var faintedPokemon = 0;
+    for (var i = 0; i < 6; i++){
+      if (teams[otherTeam][i]['stats']['hp'] <= 0){
+        console.log(teams[otherTeam][i]['stats']['hp']);
+        pokemon[i].disabled = true;
+        faintedPokemon++;
+      } else {
+        pokemon[i].disabled = false;
+      }
+      pokemon[i].innerHTML = teams[otherTeam][i]['name'];
+      pokemon[i].addEventListener("click", switchPokemon);
+    }
+    if (faintedPokemon == 6){
+      const modal = document.querySelector('#winloss');
+      const closeBtn = document.querySelector('.close');
+      closeBtn.addEventListener('click', closeModal1);
+      modal.style.display = 'block';
+      modalContent = document.getElementById('winorloss');
+      modalContent.innerText = team + " is victorious over " + otherTeam;
+    } else {
+      const modal = document.querySelector('#notification');
+      const closeBtn = document.querySelector('.close');
+      closeBtn.addEventListener('click', closeModal);
+      modal.style.display = 'block';
+      modalContent = document.getElementById('notifContent');
+      modalContent.innerText = currentPokemon[otherTeam]['name'] + " has fainted. Switching to another pokemon";
+      console.log(modalContent);
+    }
+  }
   turnsPassed++;
   updatePage();
+}
+
+var closeModal = function(e){
+  const modal = document.querySelector('#notification');
+  modal.style.display = 'none';
+}
+
+var closeModal1 = function(e){
+  const modal = document.querySelector('#winloss');
+  modal.style.display = 'none';
 }
 
 updatePage();
