@@ -40,7 +40,7 @@
 </nav>
 
 <body class="build">
-    <script src = "../static/build.js"> </script>
+    <script src = "../static/build.js"></script>
 
     <div class="row col-sm-12">
         <div class="col-sm-6">
@@ -55,7 +55,7 @@
                               <option> 2 </option>
                             </select>
 
-                            <button class="btn btn-light" id = "b1"> Pick </button>
+                            <button type="button" class="btn btn-light" id = "b1"> Pick </button>
                         </div>
                     </form>
                 </div>
@@ -74,7 +74,7 @@
                               <option> 2 </option>
                             </select>
 
-                            <button class="btn btn-light" id = "b2"> Pick </button>
+                            <button type="button" class="btn btn-light" id = "b2"> Pick </button>
                         </div>
                     </form>
                 </div>
@@ -88,13 +88,13 @@
                 <div class="card-body p-5">
                     <h2 class = "card-title"> Current Pokemon: {{name}} </h2>
 
-                    <div class="col-sm-4">
-                        <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/6.png" class="img-fluid" alt="">
+                    <div class="col-sm-4" id = "pdisplay">
+                        <img src="../static/white.jpg" class="img-fluid" alt="">
                     </div>
 
                     <h3> Moves: </h3>
 
-                    <button type="submit" class="btn btn-light"> I'm Finished! </button>
+                    <button type="button" class="btn btn-light"> I'm Finished! </button>
                 </div>
             </div>
         </div>
