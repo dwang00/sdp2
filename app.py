@@ -15,108 +15,12 @@ def login():
 
     print(__name__) #where will this go?
 
-    # link = "https://pokeapi.co/api/v2/pokemon/"
-    # request = urllib.request.Request(link)
-    # request.add_header('User-Agent', 'yes')
-    # u = urllib.request.urlopen(request)
-    # response = u.read()
-    # pokemon = json.loads(response)["results"]
-    #
     team1 = {}
     team2 = {}
-    # i = 0
-    # while i < 6:
-    #     link = pokemon[i]["url"]
-    #     request = urllib.request.Request(link)
-    #     request.add_header('User-Agent', 'yes')
-    #     u = urllib.request.urlopen(request)
-    #     response = u.read()
-    #     teammate = json.loads(response)
-    #
-    #     teammateDict = {}
-    #     x = 0
-    #     moves = {}
-    #     stats = {}
-    #
-    #     while x < 4:
-    #         link = teammate['moves'][x]["move"]['url']
-    #         request = urllib.request.Request(link)
-    #         request.add_header('User-Agent', 'yes')
-    #         u = urllib.request.urlopen(request)
-    #         response = u.read()
-    #         apimove = json.loads(response)
-    #
-    #         move = {
-    #         "accuracy":apimove['accuracy'],
-    #         "power":apimove['power'],
-    #         "dmgclass":apimove['damage_class']['name'],
-    #         "type":apimove['type']['name'],
-    #         'name':apimove['name']
-    #         }
-    #         moves[x] = move
-    #         x = x + 1
-    #     x = 0
-    #     while x < 6:
-    #         stats[teammate['stats'][x]['stat']['name']] = teammate['stats'][x]['base_stat']
-    #         x = x + 1
-    #
-    #     teammateDict['moves'] = moves
-    #     teammateDict['pic'] = teammate['sprites']['back_default']
-    #     teammateDict['type'] =  teammate['types'][0]['type']['name']
-    #     teammateDict['stats'] = stats
-    #     teammateDict['name'] = teammate['forms'][0]['name']
-    #     team1[i] = teammateDict
-    #
-    #     link = pokemon[12 - i]["url"]
-    #     request = urllib.request.Request(link)
-    #     request.add_header('User-Agent', 'yes')
-    #     u = urllib.request.urlopen(request)
-    #     response = u.read()
-    #     teammate = json.loads(response)
-    #
-    #     teammateDict = {}
-    #     x = 0
-    #     moves = {}
-    #     stats = {}
-    #
-    #     while x < 4:
-    #         link = teammate['moves'][x]["move"]['url']
-    #         request = urllib.request.Request(link)
-    #         request.add_header('User-Agent', 'yes')
-    #         u = urllib.request.urlopen(request)
-    #         response = u.read()
-    #         apimove = json.loads(response)
-    #
-    #         move = {
-    #         "accuracy":apimove['accuracy'],
-    #         "power":apimove['power'],
-    #         "dmgclass":apimove['damage_class']['name'],
-    #         "type":apimove['type']['name'],
-    #         'name':apimove['name']
-    #         }
-    #         moves[x] = move
-    #         x = x + 1
-    #     x = 0
-    #     while x < 6:
-    #         stats[teammate['stats'][x]['stat']['name']] = teammate['stats'][x]['base_stat']
-    #         x = x + 1
-    #
-    #     teammateDict['moves'] = moves
-    #     teammateDict['pic'] = teammate['sprites']['front_default']
-    #     teammateDict['type'] =  teammate['types'][0]['type']['name']
-    #     teammateDict['stats'] = stats
-    #     teammateDict['name'] = teammate['forms'][0]['name']
-    #     team2[i] = teammateDict
-    #     i = i + 1
-    #
     teams = {}
     teams['team1'] = team1
     teams['team2'] = team2
-    # print(teams['team2'][0])
-    # for i in teams['team1'][0]:
-    #     print(i + ":")
-    #     print("\n")
-    #     print(teams['team1'][0][i])
+
     teams = {}
 
     x = 1
@@ -184,7 +88,7 @@ def getPokemonByID(i, direction, moveslist):
     u = urllib.request.urlopen(request)
     response = u.read()
     teammate = json.loads(response)
-    
+
 
 
 
