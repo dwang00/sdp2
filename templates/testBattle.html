@@ -36,6 +36,48 @@
 <h3 class="text-primary" id="turnIndicator"> Player 1's Turn </h3>
 <br>
 
+
+
+
+
+<div id="notification" class="modal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <span class="close">&times;</span>
+      </div>
+      <div class="modal-body" id="notifContent">
+        <p></p>
+      </div>
+      <div class="btn-group-horizontal">
+        <button type="button" class="btn btn-secondary modalpokemon"> {{teams['team1'][0]['name']}} </button>
+        <button type="button" class="btn btn-secondary modalpokemon"> {{teams['team1'][1]['name']}} </button>
+        <button type="button" class="btn btn-secondary modalpokemon"> {{teams['team1'][2]['name']}} </button>
+        <button type="button" class="btn btn-secondary modalpokemon"> {{teams['team1'][3]['name']}} </button>
+        <button type="button" class="btn btn-secondary modalpokemon"> {{teams['team1'][4]['name']}} </button>
+        <button type="button" class="btn btn-secondary modalpokemon"> {{teams['team1'][5]['name']}} </button>
+      </div>
+  </div>
+</div>
+
+
+<div id="winloss" class="modal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <span class="close">&times;</span>
+      </div>
+      <div class="modal-body" id="winorloss">
+        <p>has lost</p>
+      </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+
 <div class="container-fluid">
   <div class="row col-sm-12">
     <div class="col-sm-1 mx-auto">
