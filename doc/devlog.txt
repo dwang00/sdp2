@@ -55,3 +55,6 @@ chenJ -- 2020-01-14 22:39
 
 wangD -- 2020-01-15 10:10
     - cached moves
+
+wangD -- 2020-01-16 00:39
+    - cached pokemon
