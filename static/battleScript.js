@@ -108,6 +108,7 @@ var switchPokemon = function(e) {
     for (var i = 0; i < 6; i++){
       if (teams['team2'][i]['name'] == e.target.innerText){
         x = i;
+        console.log(x);
       }
     }
     document.getElementById("team2pic").src = teams['team2'][x]['pic'];
@@ -121,6 +122,7 @@ var switchPokemon = function(e) {
     healthbar.attributes[6]['value'] = currentPokemon['team2']['stats']['hp'];
     healthbar.attributes[3]['value'] = "width:" + Math.floor(100 * (healthbar.attributes[4]['value'] / (currentPokemon['team2']['stats']['startingHp']))) + "%";
   }
+  console.log(currentPokemon);
   closeModal();
   turnsPassed++;
   updatePage();
@@ -173,7 +175,7 @@ var attack = function(e) {
     var faintedPokemon = 0;
     for (var i = 0; i < 6; i++){
       if (teams[otherTeam][i]['stats']['hp'] <= 0){
-        console.log(teams[otherTeam][i]['stats']['hp']);
+        //console.log(teams[otherTeam][i]['stats']['hp']);
         pokemon[i].disabled = true;
         faintedPokemon++;
       } else {
@@ -196,11 +198,18 @@ var attack = function(e) {
       modal.style.display = 'block';
       modalContent = document.getElementById('notifContent');
       modalContent.innerText = currentPokemon[otherTeam]['name'] + " has fainted. Switching to another pokemon";
-      console.log(modalContent);
+      //console.log(modalContent);
     }
+    if (mode == 1){
+      mode++;
+    } else {
+      mode--;
+    }
+  //  console.log(mode);
+  } else {
+    turnsPassed++;
+    updatePage();
   }
-  turnsPassed++;
-  updatePage();
 }
 
 var closeModal = function(e){
