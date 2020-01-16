@@ -50,7 +50,7 @@
                     <div class="form-group">
                         <select name="team1" class="form-control col-sm-6 mx-auto">
                           {% for i in teams %}
-                          <option> Team {{i}} </option>
+                          <option value="{{i}}"> Team {{i}} </option>
                           {% endfor %}
                         </select>
                     </div> <br>
@@ -59,11 +59,15 @@
                     <div class="form-group">
                         <select name="team2" class="form-control col-sm-6 mx-auto">
                           {% for i in teams %}
-                          <option> Team {{i}} </option>
+                          <option value="{{i}}"> Team {{i}} </option>
                           {% endfor %}
                         </select>
                     </div>
-
+                    <br>
+                    <div class = "text-center">
+                        <button onclick="randomTeam()" type="button" class="btn btn-light mx-auto" id = "random"> Choose Random Team </button>
+                    </div>
+                    <br>
                     <div class = "text-center">
                         <button type="submit" class="btn btn-light mx-auto" id = "b1"> Ready! </button>
                     </div>

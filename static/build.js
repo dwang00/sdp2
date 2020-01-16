@@ -95,3 +95,22 @@ var finishPokemon = function(){
   //console.log(team);
   //console.log(finalize.name);
 }
+
+
+var randomTeam() = function(){
+  thisteam = {};
+  for (var i = 0; i < 6; i++){
+    var thispokemon = {};
+    thispokemon['id'] = Math.floor(Math.random() * 151);
+    var numMoves = Object.keys(allPokemon['id']['moves']).length;
+
+    var img = document.getElementById("poke" + (teamLength-1));
+    img.src = allPokemon[pokemon['id']]['pic'];
+    for (var j = 0; j < 4; j++){
+      thispokemon['moves'][j] = Math.floor(Math.random() * numMoves);
+    }
+    thisteam[i] = thispokemon;
+    teamLength++;
+  }
+
+}

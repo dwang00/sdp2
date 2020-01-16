@@ -36,9 +36,9 @@ def battle():
     # teams['team2'] = team2
     # teamsJson = json.dumps(teams)
     # #print(teamsJson)
-    team1 = allTeams[request.args['team1']]
-    team2 = allTeams[request.args['team2']]
-    print(team1)
+    team1 = allTeams[int(request.args['team1'])]
+    team2 = allTeams[int(request.args['team2'])]
+    print(request.args['team1'])
     print(team2)
     newTeam1 = {}
     newTeam2 = {}
