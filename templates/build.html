@@ -48,13 +48,14 @@
                 <div class="card-body p-5">
                     <h2 class = "card-title"> Choose a Pokemon </h2>
 
-                        <div class="dropdown col-sm-6" id = "pokemonDropdown">
+                        <div class="dropdown col-sm-6">
                             <select class="form-control col-sm-6 dropdown" id="pokemonDropdown">
                               {% for i in allPokemon %}
                                 <option> {{allPokemon[i]['name']}} </option>
                               {% endfor %}
                             </select>
-                            <button id ="pokemonButton" type="button" class="btn btn-light" > Pick </button>
+                            <br>
+                            <button id ="pokeButton" onclick="loadPokemon()" type="button" class="btn btn-light"> Pick </button>
                         </div>
                 </div>
             </div>
@@ -67,12 +68,10 @@
 
                     <form>
                         <div class="form-inline">
-                            <select class="form-control col-sm-6">
-                              <option> 1 </option>
-                              <option> 2 </option>
+                            <select class="form-control col-sm-6 dropdown" id="moveDropdown">
                             </select>
 
-                            <button type="button" class="btn btn-light" id = "moveButton"> Pick </button>
+                            <button type="button" class="btn btn-light" id = "moveButton" onclick="loadMove()"> Pick </button>
                         </div>
                     </form>
                 </div>
@@ -86,8 +85,8 @@
                 <div class="card-body p-5">
                     <h2 class = "card-title"> Current Pokemon: {{name}} </h2>
 
-                    <div class="col-sm-4" id = "pdisplay">
-                        <img src="../static/white.jpg" class="img-fluid" alt="">
+                    <div class="col-sm-4">
+                        <img src="../static/white.jpg" class="img-fluid" alt="" id = "pdisplay">
                     </div>
 
                     <h3> Moves: </h3>
