@@ -1,4 +1,4 @@
-from flask import Flask, render_template, session, request, jsonify, redirect, url_for
+from flask import Flask, render_template, session, request, jsonify, redirect, url_for, flash
 import ast
 import urllib
 import json
@@ -6,9 +6,11 @@ import os
 import math
 import sqlite3
 from cache import runsqlcommand, cacheMoves, cachePokemon
+import databaseUtils as help
 
-allPokemon = cachePokemon()
+# allPokemon = cachePokemon()
 app = Flask(__name__) #create instance of class Flask
+app.secret_key = os.urandom(32)
 
 @app.route("/battle") #assign following fxn to run when root route requested
 def battle():
@@ -41,13 +43,30 @@ def register():
 
 @app.route("/addUser")
 def addUser():
-    #Should add the user to the database
-    return redirect(url_for("welcome"))
+    username = request.args["username"]
+    password = request.args["password"]
+    print(username)
+    print(password)
+    help.register(username,password)
+    return render_template("login.html")
 
 @app.route("/auth")
 def auth():
     #Should check user and pass against the database and either send user abck to login or to welcome
-    return redirect(url_for("login"))
+    username = request.args["username"]
+    password = request.args["password"]
+    print(username)
+    print(password)
+    if help.validate(username,password) == 1:
+        flash("Wrong username or password!")
+        return redirect(url_for("first"))
+    if help.validate(username,password) == 2:
+        flash("Wrong username or password!")
+        return redirect(url_for("first"))
+    else:
+        session["username"] = username
+        print("Logged into account with username: " + username)
+        return render_template("index.html")
 
 @app.route("/welcome")
 def landing():
@@ -56,15 +75,24 @@ def landing():
     #If the user is logging in for the first time, it should gift them their first pokemon
     return render_template("index.html")
 
+@app.route("/logout")
+def logout():
+    print("Logged out of session (username " + session["username"] + ")")
+    session.clear()
+    return redirect(url_for("first"))
+
 
 @app.route("/build")
 def build():
     return render_template("build.html", allPokemon = allPokemon)
 
 @app.route("/")
-def login():
-    #
-    return render_template("build.html")
+def first():
+    help.createUsers()
+    if "username" in session:
+        return redirect(url_for("a"))
+    else:
+        return render_template("login.html")
 
 """ @app.route("/setupBattle")
 def setupBattle():

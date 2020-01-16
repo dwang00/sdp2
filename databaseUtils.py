@@ -6,21 +6,21 @@ def createUsers():
     db = sqlite3.connect(FILENAME)
     c = db.cursor()
 
-    command = "CREATE TABLE IF NOT EXISTS users (username TEXT PRIMARY KEY, password TEXT, startingP TEXT)"
+    command = "CREATE TABLE IF NOT EXISTS users (username TEXT PRIMARY KEY, password TEXT)"
     c.execute(command)
 
     db.commit()
     db.close()
 
-def addUser(user, pass, startingP):
+def addUser(user, passw):
     #adds user and password to the database
     #also adds user's starting pokemon
     #creates table if it doesn't exist
     db = sqlite3.connect(FILENAME)
     c = db.cursor()
 
-    command = 'INSERT INTO users VALUES ({}, {}, {})'
-    command = command.format(user, pass, startingP)
+    command = 'INSERT INTO users VALUES ({}, {})'
+    command = command.format(user, passw)
     c.execute(command)
 
     db.commit()
@@ -42,13 +42,12 @@ def getUser(user):
         s = s[0]
         userDict["user"] = s[0]
         userDict["pass"] = s[1]
-        userDict["startingP"] = s[2]
 
         db.commit()
         db.close()
         return userDict
 
-def register(user, passw, startingP):
+def register(user, passw):
     userDict = getUser(user)
     # if the username is already in the DB
     if 'user' in userDict:
@@ -56,8 +55,7 @@ def register(user, passw, startingP):
 
     user = "\"" + user + "\""
     passw = "\"" + passw + "\""
-    startingP = "\"" + startingP + "\""
-    addUser(user, passw, startingP)
+    addUser(user, passw)
     return True
 
 def validate(user, passw):
