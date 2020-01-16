@@ -2,6 +2,7 @@
 <html lang="en">
 
 <head>
+    <meta id="allPokemonJson" name="{{allPokemon}}">
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
@@ -51,11 +52,12 @@
                     <form>
                         <div class="form-inline">
                             <select class="form-control col-sm-6">
-                              <option> 1 </option>
-                              <option> 2 </option>
+                              {% for i in allPokemon %}
+                                <option> {{allPokemon[i]['name']}} </option>
+                              {% endfor %}
                             </select>
 
-                            <button type="button" class="btn btn-light" id = "b1"> Pick </button>
+                            <button type="button" class="btn btn-light" id = "pokemonButton"> Pick </button>
                         </div>
                     </form>
                 </div>
@@ -74,7 +76,7 @@
                               <option> 2 </option>
                             </select>
 
-                            <button type="button" class="btn btn-light" id = "b2"> Pick </button>
+                            <button type="button" class="btn btn-light" id = "moveButton"> Pick </button>
                         </div>
                     </form>
                 </div>
@@ -94,7 +96,7 @@
 
                     <h3> Moves: </h3>
 
-                    <button type="button" class="btn btn-light"> I'm Finished With This Pokemon! </button>
+                    <button id="finishPokemon" type="button" class="btn btn-light"> I'm Finished With This Pokemon! </button>
                 </div>
             </div>
         </div>

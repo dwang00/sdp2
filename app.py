@@ -7,11 +7,11 @@ import math
 import sqlite3
 from cache import runsqlcommand, cacheMoves, cachePokemon
 
-
+allPokemon = cachePokemon()
 app = Flask(__name__) #create instance of class Flask
 
-@app.route("/a") #assign following fxn to run when root route requested
-def login():
+@app.route("/battle") #assign following fxn to run when root route requested
+def battle():
 
     print(__name__) #where will this go?
 
@@ -56,8 +56,13 @@ def landing():
     #If the user is logging in for the first time, it should gift them their first pokemon
     return render_template("index.html")
 
-@app.route("/")
+
+@app.route("/build")
 def build():
+    return render_template("build.html", allPokemon = allPokemon)
+
+@app.route("/")
+def login():
     #
     return render_template("build.html")
 

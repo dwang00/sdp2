@@ -49,40 +49,51 @@ def cacheMoves():
 
 def cachePokemon():
     i = 1
+    allPokemon = {}
     while i <= 151:
+        thisPokemon = {}
         link = "https://pokeapi.co/api/v2/pokemon/{}".format(i)
         request = urllib.request.Request(link)
         request.add_header('User-Agent', 'yes')
         u = urllib.request.urlopen(request)
         response = u.read()
-        poke = json.loads(response)["name"]
+        pokemonInfo = json.loads(response)
+        poke = json.loads(response)['name']
+        thisPokemon['name'] = poke
+        thisPokemon['pic'] =  pokemonInfo['sprites']['front_default']
+
+        moves = {}
         #e = "DROP TABLE \"{}\"".format(n)
         #runsqlcommand(e)
-        d = "CREATE TABLE \"{}\" (move TEXT)".format(n)
+        # d = "CREATE TABLE \"{}\" (move TEXT)".format(poke)
         # print(n)
         # print(d)
-        runsqlcommand(d)
+        # runsqlcommand(d)
         c = json.loads(response)["moves"]
         z = 0
         # a = "SELECT name FROM MOVES"
         # b = runsqlcommand(a)
         #print(b)
         while z < len(c):
-            name = (c[z]['move']['name']).replace("-", " ")
-            num = int(((c[z]['move']['url']).replace("https://pokeapi.co/api/v2/move/", "")).replace("/", ""))
-            #url = c[z]['move']['url']
-            if num <= 165:
-                cmd = "SELECT * FROM \"{}\"".format(n)
-                r = runsqlcommand(cmd)
-                if len(r) > 0:
-                    cmd = "SELECT * FROM \"{}\" WHERE move = '{}'".format(poke, name)
-                q = runsqlcommand(cmd)
-                if len(q) == 0:
-                    ins = "INSERT INTO \"{}\" VALUES('{}')".format(poke, name)
-                    #print(ins)
-                    runsqlcommand(ins)
+            moves[z] = c[z]['move']['name'].replace("-", " ")
+            # name = (c[z]['move']['name']).replace("-", " ")
+            # num = int(((c[z]['move']['url']).replace("https://pokeapi.co/api/v2/move/", "")).replace("/", ""))
+            # #url = c[z]['move']['url']
+            # if num <= 165:
+            #     cmd = "SELECT * FROM \"{}\"".format(n)
+            #     r = runsqlcommand(cmd)
+            #     if len(r) > 0:
+            #         cmd = "SELECT * FROM \"{}\" WHERE move = '{}'".format(poke, name)
+            #     q = runsqlcommand(cmd)
+            #     if len(q) == 0:
+            #         ins = "INSERT INTO \"{}\" VALUES('{}')".format(poke, name)
+            #         #print(ins)
+            #         runsqlcommand(ins)
             z += 1
+        thisPokemon['moves'] = moves
+        allPokemon[i] = thisPokemon
         i += 1
+    return allPokemon
 
 def getMoves(name):
     c = "SELECT * FROM {}".format(name)
