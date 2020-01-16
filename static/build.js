@@ -1,12 +1,16 @@
 var moves = 0;
-//var pokemon = JSON.parse();
-//var moves = JSON.parse();
+var pokemon = JSON.parse(document.getElementById('allPokemonJson').name);
+console.log(pokemon);
 
-var button = document.getElementById("b1");
-button.addEventListener("click", loadPokemon);
 
-var button2 = document.getElementById("b2");
-button2.addEventListener("click", loadMove);
+var pokemonButton = document.getElementById("pokemonButton");
+pokemonButton.addEventListener("click", loadPokemon);
+
+var moveButton = document.getElementById("moveButton");
+moveButton.addEventListener("click", loadMove);
+
+var finishPokemon = document.getElementById("finishPokemon");
+finishPokemon.addEventListener("click", finishPokemon);
 
 var loadPokemon = function(e) {
     var image = document.getElementById("pdisplay");
