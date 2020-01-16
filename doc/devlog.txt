@@ -1,6 +1,5 @@
 Python Promethazine DevLog
 
-
 Team -- 2020-01-06 01:43
     - Updated design doc and prepared repo
 
@@ -15,11 +14,21 @@ thompsonA -- 2020-01-07 21:10
     - added comments to each function/route explaining purpose of the function/what must be accomplished
     - created some basic html templates to be used
 
+olteanuA -- 2020-01-08 23:15
+    - created skeleton of most html files we anticipate to use
+    - added registry functions to databaseUtils.py
+
 chenJ -- 2020-01-08 09:26
     - Worked on a basic html template with bootstrap
 
 wangD -- 2020-01-09 09:23
     - Updated devlog so paths match paths in app.py
+
+olteanuA -- 2020-01-09 17:40
+    - finished most registry functions
+    - created registry routes
+    - created database helper functions to aid in pokemon information data manipulation
+    - created vault.html and appropriate routes. intention is to connect pokemon trading cards and battles
 
 thompsonA -- 2020-01-09 9:26
     - started interaction with pokeapi
@@ -34,6 +43,15 @@ thompsonA -- 2020-01-11 3:30
     - organizing API interaction further
     - needed to make sure that every time teams are formed, all of the necessary data is gotten from the API
     - this includes moves, stats, type, etc
+
+olteanuA -- 2020-01-12 20:05
+    - boostrapped login.html, register.html, index.html
+    - polished navbar for all html files
+    - login and registry complete
+    - created functions to aid in trading card aspect of project
+        - upon each win the user will be awarded with 10 trading cards.
+          each card will be a usable pokemon in battle with 4 preselected moves
+          increases project interactivity for the user
 
 chenJ -- 2020-01-13 11:23
     - Added more content to html files
@@ -56,6 +74,14 @@ chenJ -- 2020-01-14 22:39
 wangD -- 2020-01-15 10:10
     - cached moves
 
+olteanuA -- 2020-01-15 10:10
+    - in interest of time trading card vault had to unfortunately be scrapped
+    - implemented sessions and logout functionality
+    - polished pokemon info table and user tables to fit the direction we have decided to take our project in
+        - users table has been reduced to users and passwords, took out pokemon and their moves
+        - pokemon table no longer stores status conditions or stat changes
+      - tweaked battle mechanics to be more efficient
+
 wangD -- 2020-01-16 00:39
     - cached pokemon
 
@@ -66,3 +92,10 @@ thompsonA -- 2020-01-16 1:30
     - only issue is that no matter what I try, I can't find a place to properly store each team. There should be a function that does so in the database
     - Everything but actually battling and saving teams is working
     - Hardcoded battle does still work
+
+olteanuA -- 020-01-16 3:30
+    - finalized html files for super cool designs if you ask me
+    - fixed error regarding flash and bootstrap
+    - fixed glitch where certain moves did not deal damage
+    - general polishing in code for efficiency to try and make loading times faster
+      - still relatively slow but not as bad as before
