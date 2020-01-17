@@ -105,7 +105,9 @@ def getTeams():
     pokeDict = {}
 
     c.execute("SELECT * FROM users")
-    s = c.fetchall()
+    data = c.fetchall()
+    print(data)
+
 
     db.commit()
     db.close()
