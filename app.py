@@ -36,9 +36,12 @@ def battle():
     # teams['team2'] = team2
     # teamsJson = json.dumps(teams)
     # #print(teamsJson)
+    teams = {}
+    teams['team1'] = {}
+    teams['team2'] = {}
     team1 = allTeams[int(request.args['team1'])]
     team2 = allTeams[int(request.args['team2'])]
-    print(request.args['team1'])
+    #print(request.args['team1'])
     print(team2)
     newTeam1 = {}
     newTeam2 = {}
@@ -46,8 +49,9 @@ def battle():
         newTeam1[i] = getPokemonByID(team1[i]['id'], 'back', team1[i]['moves'])
     for i in team2:
         newTeam2[i] = getPokemonByID(team2[i]['id'], 'front', team2[i]['moves'])
-    teams['team1'] = team1
-    teams['team2'] = team2
+    teams['team1'] = newTeam1
+    teams['team2'] = newTeam2
+    print(teams)
     teamsJson = json.dumps(teams)
     return render_template("testBattle.html", teams = teams, teamsJson = teamsJson)
 
@@ -65,8 +69,8 @@ def setupBattle():
 def addUser():
     username = request.args["username"]
     password = request.args["password"]
-    print(username)
-    print(password)
+    #print(username)
+    #print(password)
     help.register(username,password)
     return render_template("login.html")
 
@@ -75,8 +79,8 @@ def auth():
     #Should check user and pass against the database and either send user abck to login or to welcome
     username = request.args["username"]
     password = request.args["password"]
-    print(username)
-    print(password)
+    #print(username)
+    #print(password)
     if help.validate(username,password) == 1:
         flash("Wrong username or password!")
         return redirect(url_for("first"))
@@ -85,7 +89,7 @@ def auth():
         return redirect(url_for("first"))
     else:
         session["username"] = username
-        print("Logged into account with username: " + username)
+        #print("Logged into account with username: " + username)
         return render_template("index.html")
 
 @app.route("/welcome")
@@ -93,12 +97,13 @@ def landing():
     #should get all of the user's data from database
     #should send this data to html file
     #If the user is logging in for the first time, it should gift them their first pokemon
-    team = request.args["team"]
+    team = json.loads(request.args["team"])
     # if len(allSavedTeams) == 0:
     #     numberSavedTeams = 0
+    print(team)
     totalTeams = len(allTeams)
     allTeams[totalTeams] = team
-    print(allTeams)
+    #print(allTeams)
     return render_template("index.html")
 
 @app.route("/logout")
@@ -160,7 +165,7 @@ def getPokemonByID(i, direction, moveslist):
     stats = {}
 
     while x < 4:
-        link = teammate['moves'][moveslist[x]]["move"]['url']
+        link = teammate['moves'][moveslist[str(x)]]["move"]['url']
         request = urllib.request.Request(link)
         request.add_header('User-Agent', 'yes')
         u = urllib.request.urlopen(request)

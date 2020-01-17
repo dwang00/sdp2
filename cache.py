@@ -65,7 +65,7 @@ def cachePokemon():
         moves = {}
         #e = "DROP TABLE \"{}\"".format(n)
         #runsqlcommand(e)
-        # d = "CREATE TABLE \"{}\" (move TEXT)".format(poke)
+        #d = "CREATE TABLE \"{}\" (move TEXT)".format(poke)
         # print(n)
         # print(d)
         # runsqlcommand(d)

@@ -91,26 +91,33 @@ var finishPokemon = function(){
   var moveList = document.getElementById("moveDropdown");
   moveList.innerHTML = "";
   var finalize = document.getElementById("finalize");
+  team = JSON.stringify(team);
   finalize.value = team;
-  //console.log(team);
+  console.log(team);
   //console.log(finalize.name);
 }
 
 
-var randomTeam() = function(){
+var randomTeam = function(){
   thisteam = {};
   for (var i = 0; i < 6; i++){
     var thispokemon = {};
+    thispokemon['moves'] = {}
     thispokemon['id'] = Math.floor(Math.random() * 151);
-    var numMoves = Object.keys(allPokemon['id']['moves']).length;
+    var numMoves = Object.keys(allPokemon[thispokemon['id']]['moves']).length;
 
-    var img = document.getElementById("poke" + (teamLength-1));
-    img.src = allPokemon[pokemon['id']]['pic'];
+    var img = document.getElementById("poke" + teamLength);
+    img.src = allPokemon[thispokemon['id']]['pic'];
     for (var j = 0; j < 4; j++){
       thispokemon['moves'][j] = Math.floor(Math.random() * numMoves);
     }
     thisteam[i] = thispokemon;
     teamLength++;
   }
-
+  team = thisteam;
+  var finalize = document.getElementById("finalize");
+  team = JSON.stringify(team);
+  finalize.value = team;
+  console.log(team);
+  console.log(finalize);
 }

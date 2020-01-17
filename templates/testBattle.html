@@ -9,7 +9,7 @@
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway&display=swap">
   <link rel="stylesheet" href="../static/style.css" />
-  
+
   <link rel="icon" href="../static/pokeball.png">
   <link rel="apple-touch-icon" sizes="180x180" href="../static/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="../static/favicon-32x32.png">
@@ -28,7 +28,7 @@
             <a class="nav-link button" href="/build"> Build </a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="/battle"> Battle </a>
+            <a class="nav-link" href="/setupBattle"> Battle </a>
         </li>
     </ul>
 
@@ -57,12 +57,12 @@
         <p></p>
       </div>
       <div class="btn-group-horizontal">
-        <button type="button" class="btn btn-secondary modalpokemon"> {{teams['team1'][0]['name']}} </button>
-        <button type="button" class="btn btn-secondary modalpokemon"> {{teams['team1'][1]['name']}} </button>
-        <button type="button" class="btn btn-secondary modalpokemon"> {{teams['team1'][2]['name']}} </button>
-        <button type="button" class="btn btn-secondary modalpokemon"> {{teams['team1'][3]['name']}} </button>
-        <button type="button" class="btn btn-secondary modalpokemon"> {{teams['team1'][4]['name']}} </button>
-        <button type="button" class="btn btn-secondary modalpokemon"> {{teams['team1'][5]['name']}} </button>
+        <button type="button" class="btn btn-secondary modalpokemon"> {{teams['team1']['0']['name']}} </button>
+        <button type="button" class="btn btn-secondary modalpokemon"> {{teams['team1']['1']['name']}} </button>
+        <button type="button" class="btn btn-secondary modalpokemon"> {{teams['team1']['2']['name']}} </button>
+        <button type="button" class="btn btn-secondary modalpokemon"> {{teams['team1']['3']['name']}} </button>
+        <button type="button" class="btn btn-secondary modalpokemon"> {{teams['team1']['4']['name']}} </button>
+        <button type="button" class="btn btn-secondary modalpokemon"> {{teams['team1']['5']['name']}} </button>
         <br>
       </div>
   </div>
@@ -99,8 +99,8 @@
     </div>
     <div class="col-sm-1 mx-auto">
       <div class="btn-group-vertical">
-        {% for i in teams['team1'][0]['moves'] %}
-          <button type="button" class="btn btn-secondary team1moves"> {{teams['team1'][0]['moves'][i]['name']}} </button>
+        {% for i in teams['team1']['0']['moves'] %}
+          <button type="button" class="btn btn-secondary team1moves"> {{teams['team1']['0']['moves'][i]['name']}} </button>
         {% endfor %}
       </div>
     </div>
@@ -109,24 +109,24 @@
       <div class="row h-90 w-100">
         <div class="col align-self-end">
           <div class="progress">
-            <div id="team1health" class="progress-bar active" role="progressbar" style="width: 100%" aria-valuenow={{teams['team1'][0]['stats']['hp']}} aria-valuemin="0" aria-valuemax={{teams['team1'][0]['stats']['hp']}}>
+            <div id="team1health" class="progress-bar active" role="progressbar" style="width: 100%" aria-valuenow={{teams['team1']['0']['stats']['hp']}} aria-valuemin="0" aria-valuemax={{teams['team1']['0']['stats']['hp']}}>
             </div>
           </div>
-          <img src={{teams['team1'][0]['pic']}} id="team1pic" class="img-fluid h-70 w-30" style="height:350px; width:350px">
+          <img src={{teams['team1']['0']['pic']}} id="team1pic" class="img-fluid h-70 w-30" style="height:350px; width:350px">
         </div>
         <div class="col align-self-end">
           <div class="progress">
-            <div id="team2health" class="progress-bar active" role="progressbar" style="width: 100%" aria-valuenow={{teams['team2'][0]['stats']['hp']}} aria-valuemin="0" aria-valuemax={{teams['team2'][0]['stats']['hp']}}>
+            <div id="team2health" class="progress-bar active" role="progressbar" style="width: 100%" aria-valuenow={{teams['team2']['0']['stats']['hp']}} aria-valuemin="0" aria-valuemax={{teams['team2']['0']['stats']['hp']}}>
             </div>
           </div>
-          <img src={{teams['team2'][0]['pic']}} id="team2pic" class="img-fluid h-70 w-30" style="height:350px; width:350px">
+          <img src={{teams['team2']['0']['pic']}} id="team2pic" class="img-fluid h-70 w-30" style="height:350px; width:350px">
         </div>
       </div>
     </div>
     <div class="col-sm-1 mx-auto">
       <div class="btn-group-vertical">
-        {% for i in teams['team2'][0]['moves'] %}
-          <button type="button" class="btn btn-secondary team2moves"> {{teams['team2'][0]['moves'][i]['name']}} </button>
+        {% for i in teams['team2']['0']['moves'] %}
+          <button type="button" class="btn btn-secondary team2moves"> {{teams['team2']['0']['moves'][i]['name']}} </button>
         {% endfor %}
       </div>
     </div>
