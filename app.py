@@ -125,7 +125,7 @@ def first():
     help.createUsers()
     help.createTeams()
     if "username" in session:
-        return redirect(url_for("a"))
+        return redirect(url_for("welcome"))
     else:
         return render_template("login.html")
 

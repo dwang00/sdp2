@@ -29,6 +29,8 @@ var loadPokemon = function(e){
 //  console.log(e);
   var pokemon = {};
   pokemon['name'] = pokemonDropdown.value;
+  var headername = document.getElementById("displayname");
+  headername.innerHTML = "Current Pokemon: ".concat(pokemon['name']);
   //console.log(pokemon['name'])
   var pic = document.getElementById("pdisplay");
   //console.log(pic);
