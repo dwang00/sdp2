@@ -8,29 +8,28 @@ var allChosenMoves = [];
 var numberChosenMoves = 0;
 
 var pokemonButton = document.getElementById("pokeButton");
-pokemonButton.addEventListener("click", loadPokemon);
+//pokemonButton.addEventListener("click", loadPokemon);
 //console.log(pokemonButton);
 
 var pokemonDropdown = document.getElementById("pokemonDropdown");
 //console.log(pokemonDropdown.value);
 
 var moveButton = document.getElementById("moveButton");
-moveButton.addEventListener("click", loadMove);
+//moveButton.addEventListener("click", loadMove);
 
 var finishPokemon = document.getElementById("finishPokemon");
-finishPokemon.addEventListener("click", finishPokemon);
+//finishPokemon.addEventListener("click", finishPokemon);
 
 // var loadPokemon = function(e) {
 //     var image = document.getElementById("pdisplay");
 //     image.src = "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/6.png";
 // }
 
-var loadPokemon = function(e){
+var loadPokemon = function(){
 //  console.log(e);
   var pokemon = {};
   pokemon['name'] = pokemonDropdown.value;
-  var headername = document.getElementById("displayname");
-  headername.innerHTML = "Current Pokemon: ".concat(pokemon['name']);
+  pokemonDropdown.disabled = true;
   //console.log(pokemon['name'])
   var pic = document.getElementById("pdisplay");
   //console.log(pic);
@@ -54,14 +53,16 @@ var loadPokemon = function(e){
   }
   team[teamLength] = pokemon;
   teamLength++;
-  //console.log(team);
+  console.log(team);
 }
 
-var loadMove = function(e) {
+var loadMove = function() {
     //console.log(e);
     var id = 0;
     var move = document.getElementById("moveDropdown").value;
-    var manyMoves = Object.keys(allPokemon[team[teamLength - 1]['id']]['moves']).length;
+    //teamLength = Object.keys(team).length
+    console.log(teamLength);
+    var manyMoves = Object.keys(allPokemon[team[(teamLength - 1) + ""]['id']]['moves']).length;
     //console.log(manyMoves);
     for (var i = 0; i < manyMoves; i++){
       if (move == allPokemon[team[teamLength - 1]['id']]['moves'][i]){
@@ -80,6 +81,7 @@ var loadMove = function(e) {
 
 var finishPokemon = function(){
 //  console.log(e);
+  pokemonDropdown.disabled = false;
   var pokemon = team[teamLength-1];
   pokemon['moves'] = allChosenMoves;
 //  console.log(team);
@@ -93,14 +95,16 @@ var finishPokemon = function(){
   var moveList = document.getElementById("moveDropdown");
   moveList.innerHTML = "";
   var finalize = document.getElementById("finalize");
-  team = JSON.stringify(team);
-  finalize.value = team;
-  console.log(team);
+  var jsonteam = JSON.stringify(team);
+  finalize.value = jsonteam;
+//  console.log(team);
   //console.log(finalize.name);
 }
 
 
 var randomTeam = function(){
+  pokemonDropdown.disabled = true;
+  moveDropdown.disabled = true;
   thisteam = {};
   for (var i = 0; i < 6; i++){
     var thispokemon = {};
@@ -120,6 +124,6 @@ var randomTeam = function(){
   var finalize = document.getElementById("finalize");
   team = JSON.stringify(team);
   finalize.value = team;
-  console.log(team);
-  console.log(finalize);
+  //console.log(team);
+  //console.log(finalize);
 }
