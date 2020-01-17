@@ -21,3 +21,6 @@ Activate the virtual environment on using . <path>/bin/activate (for UNIX based 
 Install the necessary packages using pip3 install -r doc/requirements.txt  
 Run the flask app python3 app.py  
 Enjoy the game!
+  
+### Youtube Demo
+https://www.youtube.com/watch?v=kYnmQHMYmek
