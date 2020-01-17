@@ -108,7 +108,7 @@ var randomTeam = function(){
   thisteam = {};
   for (var i = 0; i < 6; i++){
     var thispokemon = {};
-    thispokemon['moves'] = {}
+    thispokemon['moves'] = []
     thispokemon['id'] = Math.floor(Math.random() * 151);
     var numMoves = Object.keys(allPokemon[thispokemon['id']]['moves']).length;
 
@@ -122,8 +122,8 @@ var randomTeam = function(){
   }
   team = thisteam;
   var finalize = document.getElementById("finalize");
-  team = JSON.stringify(team);
-  finalize.value = team;
-  //console.log(team);
+  var jsonteam = JSON.stringify(team);
+  finalize.value = jsonteam;
+  console.log(team);
   //console.log(finalize);
 }

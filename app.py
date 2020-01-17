@@ -167,7 +167,7 @@ def getPokemonByID(i, direction, moveslist):
     stats = {}
 
     while x < 4:
-        link = teammate['moves'][moveslist[str(x)]]["move"]['url']
+        link = teammate['moves'][moveslist[x]]["move"]['url']
         request = urllib.request.Request(link)
         request.add_header('User-Agent', 'yes')
         u = urllib.request.urlopen(request)
