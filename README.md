@@ -11,7 +11,8 @@ Recreation of the game Pokemon Showdown, where users can build pokemon teams and
 
 ### APIs:
 * [PokeAPI](https://docs.google.com/document/d/1hMbL36d5qqFLfufHOqUMWwraWFudfJdekqp6urex0KU/edit)
-* [video demo here](https://www.youtube.com/watch?v=kYnmQHMYmek)
+
+[video demo here](https://www.youtube.com/watch?v=kYnmQHMYmek)
 
 ### Launch Codes:
 Clone the repo, then cd into it  
