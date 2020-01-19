@@ -110,6 +110,9 @@ var randomTeam = function(){
     var thispokemon = {};
     thispokemon['moves'] = []
     thispokemon['id'] = Math.floor(Math.random() * 151);
+    if (Object.values(thisteam).indexOf(thispokemon['id']) > -1) {
+      thispokemon['id'] = Math.floor(Math.random() * 151);
+    }
     var numMoves = Object.keys(allPokemon[thispokemon['id']]['moves']).length;
 
     var img = document.getElementById("poke" + teamLength);
